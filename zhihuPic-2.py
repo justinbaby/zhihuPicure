@@ -44,7 +44,7 @@ def get_captcha():
         im.close()
     except:
         print u'captcha.jpg 所在目录:%s, 手动输入'% os.path.abspath('captcha.jpg')
-    captcha = input("input captcha\n")
+    captcha = raw_input("input captcha\n")
     return captcha
 
 def isLogin():
@@ -88,8 +88,8 @@ def login(secret, account):
         print '需要验证码'
         postdata['captcha'] = get_captcha()
         login_page = session.post(post_url, data=postdata, headers=headers)
-        login_code = eval(login_page.text)   #eval 从字符串中提取字典
-        u = login_code['msg']
+        # login_code = eval(login_page.text)   #eval 从字符串中提取字典
+        # u = login_code['msg']
     session.cookies.save()
 
 
@@ -104,7 +104,7 @@ def getImageUrl():
         print '===========offset: ', size
         postdata = {
             'method': 'next',
-            'params': '{"url_token":' + str(46435597) + ',"pagesize": "10",' +\
+            'params': '{"url_token":' + str(34078228) + ',"pagesize": "10",' +\
                       '"offset":' + str(size) + "}",
             '_xsrf':get_xsrf(),
 
@@ -127,7 +127,7 @@ def getImageUrl():
 
 def saveImagesFromUrl(filePath):
     imagesUrl = getImageUrl()
-    print "图片数: ", len(imageUrl)
+    print "图片数: ", len(imagesUrl)
     if not imagesUrl:
         print 'imagesUrl is empty'
         return
@@ -151,5 +151,5 @@ def saveImagesFromUrl(filePath):
             print '连接超时,URL: ', image
     print '图片下载完毕'
 
-login('这是你的知乎密码','这是你的知乎账户')
-saveImagesFromUrl('/Volumes/HDD/Picture')
+login('20100125','15643645806')
+saveImagesFromUrl('D:/zhihu')

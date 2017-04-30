@@ -1,4 +1,5 @@
 # -*-coding:utf-8 -*-
+import urllib2
 
 import requests
 # import urllib
@@ -47,7 +48,7 @@ def get_captcha():
     except:
         print
         u'captcha.jpg 所在目录:%s, 手动输入' % os.path.abspath('captcha.jpg')
-    captcha = input("input captcha\n")
+    captcha = raw_input("input captcha\n")
     return captcha
 
 
@@ -97,8 +98,8 @@ def login(secret, account):
         '需要验证码'
         postdata['captcha'] = get_captcha()
         login_page = session.post(post_url, data=postdata, headers=headers)
-        login_code = eval(login_page.text)  # eval 从字符串中提取字典
-        u = login_code['msg']
+        # login_code = eval(login_page.text)  # eval 从字符串中提取字典
+        # u = login_code['msg']
     session.cookies.save()
 
 
@@ -159,5 +160,5 @@ def saveImagesFromUrl(pageUrl, filePath):
             'Io error'
 
 
-login('这里是密码', '这里是你的知乎账户')
-saveImagesFromUrl('https://www.zhihu.com/question/46435597', '/Volumes/HDD/image')
+login('20100125','15643645806')
+saveImagesFromUrl('https://www.zhihu.com/question/34078228', '/Volumes/HDD/image')
