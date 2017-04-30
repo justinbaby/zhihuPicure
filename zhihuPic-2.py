@@ -102,6 +102,7 @@ def getImageUrl():
     #循环直至爬完整个问题的回答
     while(True):
         print '===========offset: ', size
+        # url_token为你的问题id
         postdata = {
             'method': 'next',
             'params': '{"url_token":' + str(34078228) + ',"pagesize": "10",' +\
