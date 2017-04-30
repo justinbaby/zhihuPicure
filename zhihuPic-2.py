@@ -1,4 +1,5 @@
 # -*-coding:utf-8 -*-
+import urllib2
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -9,6 +10,7 @@ import re
 import time
 import os.path
 from PIL import Image
+# -*-coding:utf-8 -*-
 
 
 user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)'
@@ -105,7 +107,7 @@ def getImageUrl():
         # url_token为你的问题id
         postdata = {
             'method': 'next',
-            'params': '{"url_token":' + str(34078228) + ',"pagesize": "10",' +\
+            'params': '{"url_token":' + str(35874887) + ',"pagesize": "10",' +\
                       '"offset":' + str(size) + "}",
             '_xsrf':get_xsrf(),
 
@@ -152,5 +154,5 @@ def saveImagesFromUrl(filePath):
             print '连接超时,URL: ', image
     print '图片下载完毕'
 
-login('20100125','15643645806')
-saveImagesFromUrl('D:/zhihu')
+login('password','15643645806')
+saveImagesFromUrl('D:/zhihu_expressions')

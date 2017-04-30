@@ -160,5 +160,5 @@ def saveImagesFromUrl(pageUrl, filePath):
             'Io error'
 
 
-login('20100125','15643645806')
+login('password','15643645806')
 saveImagesFromUrl('https://www.zhihu.com/question/34078228', '/Volumes/HDD/image')
