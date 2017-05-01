@@ -5,15 +5,14 @@ from threading import Thread
 from Queue import Queue
 import requests
 from requests.adapters import HTTPAdapter
-# import urllib
-# import urllib2
 import cookielib
 import re
 import time
 import os.path
 from PIL import Image
 
-user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)'
+qid=41432739
+user_agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36'
 headers = {'User-Agent': user_agent}
 
 session = requests.session()
@@ -110,7 +109,7 @@ def getPageCode(pageUrl):
             return None
 
 queue = Queue(50)
-filePath = '/Volumes/HDD/image'
+filePath = '/Volumes_Zhihu/'+str(qid)+'/image'
 isRun = True
 
 
@@ -128,7 +127,7 @@ class GetImageURLThread(Thread):
             print '===========offset: ', size
             postdata = {
                 'method': 'next',
-                'params': '{"url_token":' + str(34243513) + ',"pagesize": "10",' + \
+                'params': '{"url_token":' + str(qid) + ',"pagesize": "10",' + \
                           '"offset":' + str(size) + "}",
                 '_xsrf': get_xsrf(),
 
@@ -179,7 +178,7 @@ class DownloadImgAndWriteToFile(Thread):
 
 
 if __name__ == '__main__':
-    login('password', '15643645806')
+    login('***', '15643645806')
     urlThread = GetImageURLThread()
     downloadThread = DownloadImgAndWriteToFile()
     urlThread.start()
