@@ -11,7 +11,8 @@ import time
 import os.path
 from PIL import Image
 
-qid=41432739
+qid = 21180335
+
 user_agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36'
 headers = {'User-Agent': user_agent}
 
@@ -108,8 +109,9 @@ def getPageCode(pageUrl):
             print u"打开链接失败...", e.reason
             return None
 
+
 queue = Queue(50)
-filePath = '/Volumes_Zhihu/'+str(qid)+'/image'
+filePath = '/Volumes_Zhihu/' + str(qid) + '/image'
 isRun = True
 
 
@@ -148,6 +150,7 @@ class GetImageURLThread(Thread):
                 items = re.findall(pattern, pageUrl)
                 for item in items:  # 这里去掉得到的图片URL中的转义字符'\\'  
                     imageUrl = item.replace("\\", "")
+                    imageUrl = imageUrl.replace('_b', '_r')
                     queue.put(imageUrl)
 
 
@@ -185,4 +188,4 @@ if __name__ == '__main__':
     downloadThread.start()
 
     urlThread.join()
-    downloadThread.join()  
+    downloadThread.join()
